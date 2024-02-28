@@ -1,3 +1,4 @@
+import 'package:Biomania2/view/home/home_screen.dart';
 import 'package:get/get.dart';
 import '../login/login_screen.dart';
 
@@ -8,7 +9,7 @@ class SplashScreenController extends GetxController {
   //delay with variable of time
   SplashScreenController() {
     Future.delayed(Duration(seconds: duration.inSeconds), () {
-      Get.off(() => const LoginScreen());
+      Get.off(() => const HomeScreen());
     });
   }
 }

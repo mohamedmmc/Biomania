@@ -8,6 +8,7 @@ class AppFonts {
     fontFamily: 'SF Pro Rounded',
     fontWeight: FontWeight.w700,
   );
+
   static TextStyle x12Regular = const TextStyle(
     color: kPrimaryColor,
     fontSize: 12,
@@ -31,6 +32,12 @@ class AppFonts {
   static TextStyle x20Regular = const TextStyle(
     color: kSecondaryColor,
     fontSize: 20,
+    fontFamily: 'SF Pro Rounded',
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle x30Regular = const TextStyle(
+    color: kSecondaryColor,
+    fontSize: 30,
     fontFamily: 'SF Pro Rounded',
     fontWeight: FontWeight.w400,
   );
@@ -64,5 +71,12 @@ class AppFonts {
     fontSize: 15,
     fontFamily: 'SF Pro Rounded',
     fontWeight: FontWeight.w400,
+  );
+  static TextStyle x12RegularUnderline = const TextStyle(
+    color: kPrimaryColor,
+    fontSize: 12,
+    fontFamily: 'SF Pro Rounded',
+    fontWeight: FontWeight.w400,
+    decoration: TextDecoration.underline,
   );
 }

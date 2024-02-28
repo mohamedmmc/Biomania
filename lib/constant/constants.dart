@@ -44,6 +44,12 @@ class AppConstants {
   static const String rcPro = 'RCPRO';
   static const String policyholderCode = 'Adhérant';
   static const String bioCleaningCertificate = 'Certificat bionettoyage';
+  //Etape1 Screen
+  static const String yourCommande = 'Votre commande';
+  static const String planifie = 'Planifier votre nettoyage';
+  static const String planifier = 'Planifier';
+
+
 
 
 

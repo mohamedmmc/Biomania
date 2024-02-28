@@ -1,4 +1,6 @@
 import 'package:Biomania2/repository/user_repository.dart';
+import 'package:Biomania2/view/Mission/mission_controller.dart';
+import 'package:Biomania2/view/Mission/mission_screen.dart';
 import 'package:Biomania2/view/home/home_controller.dart';
 import 'package:Biomania2/view/home/home_screen.dart';
 import 'package:Biomania2/view/inscription/inscription_controller.dart';
@@ -33,9 +35,9 @@ class MyApp extends StatelessWidget {
           binding: BindingsBuilder.put(() => InscriptionController()),
         ),
         GetPage(
-          name: HomeController.routeName,
-          page: () => const HomeScreen(),
-          binding: BindingsBuilder.put(() => HomeController()),
+          name: MissionController.routeName,
+          page: () =>  const MissionScreen(),
+          binding: BindingsBuilder.put(() => MissionController()),
         )
       ],
     );
@@ -48,6 +50,7 @@ class InitialBindings implements Bindings {
     // Add the main application controller/services here for initialisation into the GetX store
     Get.lazyPut(() => SplashScreenController());
     Get.lazyPut(() => LoginController());
+    Get.lazyPut(() => HomeController());
     Get.put<UserRepository>(UserRepository(), permanent: true);
   }
 }
