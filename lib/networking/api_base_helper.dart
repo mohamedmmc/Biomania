@@ -7,7 +7,6 @@ import 'package:http_parser/http_parser.dart';
 import 'package:mime/mime.dart';
 
 import '../constant/app_fonts.dart';
-import '../constant/colors.dart';
 import '../helper/helper.dart';
 import '../service/shared_preferences.dart';
 import 'api_exceptions.dart';
@@ -24,8 +23,15 @@ class ApiBaseHelper {
   // final String _baseUrl = 'https://api.youboost.tn';
   String? getToken() => SharedPreferencesService().get('jwt');
 
-  Future<dynamic> request(RequestType requestType, String url, {Map<String, String>? headers, dynamic body, File? file, bool sendToken = false}) async {
-    assert(requestType == RequestType.upload && file != null || requestType != RequestType.upload, 'Please ensure to incule the file to upload!');
+  Future<dynamic> request(RequestType requestType, String url,
+      {Map<String, String>? headers,
+      dynamic body,
+      File? file,
+      bool sendToken = false}) async {
+    assert(
+        requestType == RequestType.upload && file != null ||
+            requestType != RequestType.upload,
+        'Please ensure to incule the file to upload!');
     late http.Response response;
     Helper.isLoading.value = true;
     final String? token = sendToken ? getToken() : null;
@@ -38,14 +44,25 @@ class ApiBaseHelper {
         response = await http.post(
           requestUrl,
           body: jsonEncode(body),
-          headers: headers ?? {'Content-type': 'application/json', 'charset': 'UTF-8', if (token != null && token.isNotEmpty) 'Authorization': 'Bearer $token'},
+          headers: headers ??
+              {
+                'Content-type': 'application/json',
+                'charset': 'UTF-8',
+                if (token != null && token.isNotEmpty)
+                  'Authorization': 'Bearer $token'
+              },
         );
         break;
       case RequestType.put:
         response = await http.put(
           requestUrl,
           body: jsonEncode(body),
-          headers: headers ?? {'Content-type': 'application/json', 'charset': 'UTF-8', if (sendToken) 'Authorization': 'Bearer $token'},
+          headers: headers ??
+              {
+                'Content-type': 'application/json',
+                'charset': 'UTF-8',
+                if (sendToken) 'Authorization': 'Bearer $token'
+              },
         );
         break;
       case RequestType.delete:
@@ -60,9 +77,11 @@ class ApiBaseHelper {
           return response;
         }
       case RequestType.upload:
-        final mimeTypeData = lookupMimeType(file!.path, headerBytes: [0xFF, 0xD8])?.split('/');
+        final mimeTypeData =
+            lookupMimeType(file!.path, headerBytes: [0xFF, 0xD8])?.split('/');
         final imageUploadRequest = http.MultipartRequest('POST', requestUrl);
-        if (sendToken) imageUploadRequest.headers['Authorization'] = 'Bearer $token';
+        if (sendToken)
+          imageUploadRequest.headers['Authorization'] = 'Bearer $token';
         final uploadedFile = await http.MultipartFile.fromPath(
           'image',
           file.path,
@@ -86,19 +105,39 @@ dynamic _returnResponse(http.Response response) {
     case 201:
       return jsonDecode(response.body);
     case 400:
-      Helper.snackBar(message: jsonDecode(response.body)['message'], title: 'nope', includeDismiss: false, styleMessage: AppFonts.x12Regular);
+      Helper.snackBar(
+          message: jsonDecode(response.body)['message'],
+          title: 'nope',
+          includeDismiss: false,
+          styleMessage: AppFonts.x12Regular);
       throw BadRequestException(response.body.toString());
     case 401:
-      Helper.snackBar(message: jsonDecode(response.body)['message'], title: 'nope', includeDismiss: false, styleMessage: AppFonts.x12Regular);
+      Helper.snackBar(
+          message: jsonDecode(response.body)['message'],
+          title: 'nope',
+          includeDismiss: false,
+          styleMessage: AppFonts.x12Regular);
       throw Exception(response.body.toString());
     case 409:
-      Helper.snackBar(message: jsonDecode(response.body)['message'], title: 'nope', includeDismiss: false, styleMessage: AppFonts.x12Regular);
+      Helper.snackBar(
+          message: jsonDecode(response.body)['message'],
+          title: 'nope',
+          includeDismiss: false,
+          styleMessage: AppFonts.x12Regular);
       throw ConflictException(response.body.toString());
     case 403:
-      Helper.snackBar(message: jsonDecode(response.body)['message'], title: 'nope', includeDismiss: false, styleMessage: AppFonts.x12Regular);
+      Helper.snackBar(
+          message: jsonDecode(response.body)['message'],
+          title: 'nope',
+          includeDismiss: false,
+          styleMessage: AppFonts.x12Regular);
       throw UnauthorisedException(response.body.toString());
     case 404:
-      Helper.snackBar(message: jsonDecode(response.body)['message'], title: 'nope', includeDismiss: false, styleMessage: AppFonts.x12Regular);
+      Helper.snackBar(
+          message: jsonDecode(response.body)['message'],
+          title: 'nope',
+          includeDismiss: false,
+          styleMessage: AppFonts.x12Regular);
       throw NotFoundException(response.body.toString());
     case 500:
     default:

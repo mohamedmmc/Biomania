@@ -1,5 +1,3 @@
-import 'package:Biomania2/model/historique.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stacked_card_carousel/stacked_card_carousel.dart';
@@ -13,6 +11,7 @@ import 'components/historique_card.dart';
 import 'home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const HomeScreen({Key? key});
 
   @override
@@ -88,7 +87,9 @@ class HomeScreen extends StatelessWidget {
                         return FancyCard(
                           image: data.image,
                           name: data.name,
-                          job: data.job, date: data.date, price: data.price,
+                          job: data.job,
+                          date: data.date,
+                          price: data.price,
                           onPressed: controller.navigateToMission,
                         );
                       }).toList(),

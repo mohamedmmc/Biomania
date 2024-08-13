@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constant/app_fonts.dart';
 import '../../../constant/colors.dart';
-import '../../../constant/sizes.dart';
 import '../../../widgets/custom_buttons.dart';
-import '../../../widgets/custom_image_view.dart';
 import '../../../widgets/map.dart';
 
 class CustomMapCard extends StatelessWidget {
@@ -14,7 +12,7 @@ class CustomMapCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
-      child: Container(
+      child: SizedBox(
         height: 300,
         width: 300,
         child: Stack(
@@ -22,7 +20,7 @@ class CustomMapCard extends StatelessWidget {
             // CustomImageView as background
             MapView(),
             // Texts in top left
-             Padding(
+            Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +31,7 @@ class CustomMapCard extends StatelessWidget {
                   ),
                   Text(
                     'maintenat',
-                    style:AppFonts.x20Bold.copyWith(color: kBlackColor),
+                    style: AppFonts.x20Bold.copyWith(color: kBlackColor),
                   ),
                 ],
               ),
@@ -47,9 +45,7 @@ class CustomMapCard extends StatelessWidget {
                 height: 90,
                 backgroundColor: Colors.black,
                 titleColor: Colors.white,
-                onPressed: (){
-      
-                },
+                onPressed: () {},
                 icon: Icons.add,
               ),
             ),

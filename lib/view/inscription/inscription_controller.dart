@@ -1,7 +1,6 @@
 import 'package:Biomania2/model/user.dart';
 import 'package:Biomania2/repository/user_repository.dart';
 import 'package:Biomania2/view/home/home_controller.dart';
-import 'package:Biomania2/view/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,16 +9,19 @@ import 'package:intl_phone_field/countries.dart';
 import '../../constant/enums.dart';
 import '../../helper/file_image_picker.dart';
 
-class InscriptionController extends GetxController with GetSingleTickerProviderStateMixin {
+class InscriptionController extends GetxController
+    with GetSingleTickerProviderStateMixin {
   static String routeName = '/inscription';
   late final tabController = TabController(length: 5, vsync: this);
   final TextEditingController nameController = TextEditingController();
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
   final TextEditingController adresseController = TextEditingController();
-  final TextEditingController matriculeFiscalController = TextEditingController();
+  final TextEditingController matriculeFiscalController =
+      TextEditingController();
   final TextEditingController passportController = TextEditingController();
   final TextEditingController numFreelancerController = TextEditingController();
   Rx<XFile?> identityCardFile = Rx<XFile?>(null);

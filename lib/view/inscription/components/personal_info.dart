@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../../constant/app_fonts.dart';
 import '../../../constant/colors.dart';
 import '../../../constant/constants.dart';
@@ -17,10 +16,12 @@ class PersonalInfoTab extends StatefulWidget {
   const PersonalInfoTab({Key? key, required this.controller}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PersonalInfoTabState createState() => _PersonalInfoTabState();
 }
 
-class _PersonalInfoTabState extends State<PersonalInfoTab> with AutomaticKeepAliveClientMixin {
+class _PersonalInfoTabState extends State<PersonalInfoTab>
+    with AutomaticKeepAliveClientMixin {
   late final TextEditingController confirmPasswordController;
 
   @override
@@ -48,7 +49,8 @@ class _PersonalInfoTabState extends State<PersonalInfoTab> with AutomaticKeepAli
             fit: BoxFit.cover,
           ),
           const SizedBox(height: 40.0),
-          Text(AppConstants.creerCompteTitle, textAlign: TextAlign.center, style: AppFonts.x30Bold),
+          Text(AppConstants.creerCompteTitle,
+              textAlign: TextAlign.center, style: AppFonts.x30Bold),
           const SizedBox(height: 8.0),
           Text(AppConstants.creerCompteSubtitle, style: AppFonts.x12Regular),
           Text(AppConstants.creerCompteSubtitle2, style: AppFonts.x12Regular),
@@ -131,7 +133,8 @@ class _PersonalInfoTabState extends State<PersonalInfoTab> with AutomaticKeepAli
                   backgroundColor: Colors.black,
                   titleColor: Colors.white,
                   onPressed: () {
-                    widget.controller.changeTab(index: PhoneDetailTab.indexValue);
+                    widget.controller
+                        .changeTab(index: PhoneDetailTab.indexValue);
                   },
                   icon: Icons.done,
                 )
@@ -142,5 +145,4 @@ class _PersonalInfoTabState extends State<PersonalInfoTab> with AutomaticKeepAli
       ),
     );
   }
-
 }

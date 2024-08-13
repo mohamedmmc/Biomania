@@ -1,8 +1,7 @@
 import 'package:Biomania2/repository/user_repository.dart';
-import 'package:Biomania2/view/Mission/mission_controller.dart';
-import 'package:Biomania2/view/Mission/mission_screen.dart';
+import 'package:Biomania2/view/mission/mission_controller.dart';
+import 'package:Biomania2/view/mission/mission_screen.dart';
 import 'package:Biomania2/view/home/home_controller.dart';
-import 'package:Biomania2/view/home/home_screen.dart';
 import 'package:Biomania2/view/inscription/inscription_controller.dart';
 import 'package:Biomania2/view/inscription/inscription_screen.dart';
 import 'package:Biomania2/view/login/login_controller.dart';
@@ -36,7 +35,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: MissionController.routeName,
-          page: () =>  const MissionScreen(),
+          page: () => const MissionScreen(),
           binding: BindingsBuilder.put(() => MissionController()),
         )
       ],
